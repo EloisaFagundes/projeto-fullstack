@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import AppBar from "../../components/AppBar/AppBar";
-import {
-  Button,
-  Typography,
-  TextField,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+import { loginForm } from "./constants";
+import { useDispatch } from "react-redux";
+import { signup } from "../../actions/index";
+
+import { Button, Typography, TextField, MenuItem } from "@material-ui/core";
 
 const SignupWrapper = styled.div`
   display: flex;
@@ -49,6 +47,8 @@ function SignupPage() {
     { role: "UNPAYINGUSER", name: "USUÁRIO GRATUITO" },
   ];
 
+  const dispatch = useDispatch();
+
   const changeSignupForm = (event) => {
     const { value, name } = event.target;
     setFormSignup({
@@ -59,18 +59,23 @@ function SignupPage() {
 
   const sendSignupForm = (event) => {
     event.preventDefault();
-    console.log(formSignup);
+    dispatch(signup(formSignup));
+    setFormSignup({});
+    // console.log(formSignup);
   };
 
   return (
     <>
       <AppBar />
+
       <SignupWrapper>
-      <Typography variant="h5" color="secondary">
+        <Typography variant="h5" color="secondary">
           Cadastro
         </Typography>
         <FormSignupWrapper onSubmit={sendSignupForm}>
-          <Select
+          <TextField
+            select
+            required
             onChange={changeSignupForm}
             value={formSignup.role}
             label="Tipo"
@@ -86,66 +91,35 @@ function SignupPage() {
                 </MenuItem>
               );
             })}
-          </Select>
+          </TextField>
 
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="Nome"
-            name="name"
-            value={formSignup.name}
-            onChange={changeSignupForm}
-          />
+          {loginForm.map((input) => {
+            return input.role === undefined ||
+              input.role === formSignup.role ? (
+              <TextField
+                required={input.required}
+                variant="outlined"
+                margin="normal"
+                type={input.type}
+                label={input.label}
+                name={input.name}
+                pattern={input.pattern}
+                title={input.title}
+                value={formSignup[input.name]}
+                onChange={changeSignupForm}
+                inputProps={{
+                  pattern: input.pattern,
+                  title: input.title,
+                }}
+              />
+            ) : (
+              <></>
+            );
+          })}
 
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="Apelido"
-            name="nickname"
-            value={formSignup.nickname}
-            onChange={changeSignupForm}
-          />
-
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="E-mail"
-            name="email"
-            value={formSignup.email}
-            onChange={changeSignupForm}
-          />
-
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="Senha"
-            name="password"
-            value={formSignup.password}
-            onChange={changeSignupForm}
-          />
-
-          {formSignup.role === "BAND" && (
-            <TextField
-              required
-              variant="outlined"
-              margin="normal"
-              type="text"
-              label="Descrição"
-              name="description"
-              value={formSignup.description}
-              onChange={changeSignupForm}
-            />
-          )}
-
-          <Button type="onSubmit" color="primary" variant="contained">CADASTRAR</Button>
+          <Button type="onSubmit" color="primary" variant="contained">
+            CADASTRAR
+          </Button>
         </FormSignupWrapper>
       </SignupWrapper>
     </>
