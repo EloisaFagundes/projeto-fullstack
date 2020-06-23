@@ -90,10 +90,11 @@ function LoginPage() {
         <RegisterWrapper>
           <Typography variant="subtitle1" component="p">
             Ainda não possui cadastro?
-          </Typography>
-          <Button color="inherit" href="/signup">
+            <Button color="inherit" href="/signup">
             Clique aqui
           </Button>
+          </Typography>
+        
         </RegisterWrapper>
       </LoginWrapper>
     </>

@@ -13,8 +13,8 @@ export const loginForm = [
         label: "Apelido",
         type: "text",
         required: true,
-        pattern: "[A-Za-zÀ-ú ]{3,}",
-        title: "O campo Nome do Usuário deve ter no mínimo 3 letras.",
+        pattern: "[A-Za-z]{3,}",
+        title: "O campo Nome do Usuário deve ter no mínimo 3 letras e não deve conter CARACTERES ESPECIAIS.",
     },
     {
         name: "email",
@@ -28,7 +28,7 @@ export const loginForm = [
         type: "password",
         required: true,
         pattern: "[A-Za-z0-9]{6,}",
-        title: "O campo Senha deve ter no mínimo 5 letras ou números, sem espaço.",
+        title: "O campo Senha deve ter no mínimo 6 letras ou números, sem espaço.",
     },
     {
         name: "description",
