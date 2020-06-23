@@ -6,7 +6,6 @@ const baseUrl="http://localhost:3001"
 const getToken = () => localStorage.getItem("token")
 
 // signups
-
 export const signupUser = (signupData) => async (dispatch) => {
 // console.log(signupData, "Cheguei signupUSER action")
 
@@ -65,7 +64,6 @@ export const signupAdmin = (signupData) => async (dispatch) => {
 
 
 // login
-
 export const login = (info) => async (dispatch) => {
     // console.log(info, "Cheguei login action")
     
@@ -83,3 +81,28 @@ export const login = (info) => async (dispatch) => {
         alert("Não foi possível efetuar login.");
       }
     };
+
+    // admin functions
+  export const setBands = (bands) => ({
+    type: "SET_BANDS",
+    payload: {
+      bands
+    }
+  })
+
+  export const getBands = () => async (dispatch) => {
+    console.log("Pega sua lista de artistas.")
+    // try {
+    //   const response = await axios.get(`${baseUrl}/all-bands`, {
+    //     headers: {
+    //       authorization: getToken()
+    //     }
+    //   })
+
+    //   dispatch(setBands(response.data.bands))
+
+    // } catch(err) {
+    //   console.error(err.message)
+    //     alert("Não foi possível acessar a lista de bandas cadastradas.")
+    // }
+  }

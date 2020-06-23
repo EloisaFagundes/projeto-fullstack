@@ -1,35 +1,14 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useRoleTypes } from "../../utils/customHooks"
+
 import AppBar from "../../components/AppBar/AppBar";
 import { loginForm } from "./constants";
 import { useDispatch } from "react-redux";
 import { signupUser, signupBand, signupAdmin } from "../../actions/index";
 
 import { Button, Typography, TextField, MenuItem } from "@material-ui/core";
+import { SignupWrapper, FormSignupWrapper } from "./Styles"
 
-const SignupWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 2rem auto;
-  width: 30vw;
-  min-height: 80vh;
-  justify-content: center;
-  text-align: center;
-
-  @media screen and (max-device-width: 1200px) {
-    width: 90vw;
-  }
-`;
-
-const FormSignupWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const RegisterWrapper = styled.div`
-  margin-top: 2rem;
-  text-align: center;
-`;
 
 function SignupPage() {
   const [formSignup, setFormSignup] = useState({
@@ -41,8 +20,8 @@ function SignupPage() {
     description: "",
   });
   const [isAdmin, setIsAdmin] = useState(false)
-  const [userRole, setUserRole] = useState("")
-  console.log(isAdmin)
+  const userRole = useRoleTypes()
+  // console.log(isAdmin)
 
   const roleTypes = [
     { role: "BAND", name: "ARTISTA" },
@@ -53,12 +32,6 @@ function SignupPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(userRole)
-    const user = localStorage.getItem("user")
-    const newUser = JSON.parse(user)
-    if(newUser) {
-    setUserRole(newUser.role)
-  }
     if(userRole === "ADMIN") {
       setIsAdmin(true)
     }
@@ -69,7 +42,7 @@ function SignupPage() {
     setFormSignup({
       ...formSignup,
       [name]: value,
-    });
+    }); 
   };
 
   const sendSignupForm = (event) => {

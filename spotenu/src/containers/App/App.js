@@ -1,8 +1,8 @@
 import React from "react";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-// import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
-// import theme from "../../style/theme";
+import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
+import theme from "../../theme/index";
 import Router from "../Router";
 import { createBrowserHistory } from "history";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -22,10 +22,10 @@ const store = createStore(generateReducers(history), compose(...middlewares));
 
 export const App = () => (
   <Provider store={store}>
-    {/* <MuiThemeProvider theme={theme}> */}
-      {/* <CssBaseline /> */}
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
       <Router history={history} />
-    {/* </MuiThemeProvider> */}
+    </MuiThemeProvider>
   </Provider>
 );
 
