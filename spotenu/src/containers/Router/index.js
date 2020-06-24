@@ -14,8 +14,8 @@ import BandPage from "../BandPage/BandPage"
 
 export const routes = {
     root: "/",
+    home:"/home",
     signup: "/signup",
-    login: "/login",
     user: "/user",
     admin: "/admin",
     approveBands: "/aprovar-bandas",
@@ -29,9 +29,9 @@ function Router(props) {
         
         <ConnectedRouter history={props.history}>
             <Switch>
-                <Route exact path={routes.root} component={HomePage} />
+                <Route exact path={routes.home} component={HomePage} />
                 <Route exact path={routes.signup} component={SignupPage} />
-                <Route exact path={routes.login} component={LoginPage} />
+                <Route exact path={routes.root} component={LoginPage} />
                 <Route exact path={routes.user} component={UserPage} />
                 <Route exact path={routes.admin} component={AdminPage} />
                 <Route exact path={routes.approveBands} component={ApproveBands} />

@@ -18,3 +18,15 @@ export const FormSignupWrapper = styled.form`
 display: flex;
 flex-direction: column;
 `;
+
+export const LogoStyled = styled.img`
+    width: 30%;
+    height: auto;
+    margin: 2rem auto;
+  
+`
+
+export const RegisterWrapper = styled.div`
+  margin-top: 2rem;
+  text-align: center;
+`;

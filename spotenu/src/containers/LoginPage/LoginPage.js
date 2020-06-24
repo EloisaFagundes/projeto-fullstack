@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { login } from "../../actions/index";
-import AppBar from "../../components/AppBar/AppBar";
 
 import { Button, Typography, TextField } from "@material-ui/core";
-import {LoginWrapper, FormWrapper, RegisterWrapper} from "./Styles"
-
+import {
+  LoginWrapper,
+  FormWrapper,
+  RegisterWrapper,
+  LogoStyled,
+} from "./Styles";
 
 function LoginPage() {
   const [form, setForm] = useState({
@@ -27,26 +30,31 @@ function LoginPage() {
   const sendForm = (event) => {
     event.preventDefault();
     console.log(form);
-    dispatch(login(form))
-    setForm({})
+    dispatch(login(form));
+    setForm({});
   };
 
   return (
     <>
-      <AppBar />
-
       <LoginWrapper>
-        <Typography variant="h5" color="secondary" >
+        <LogoStyled
+          src={require("../../images/Novo Projeto (3).png")}
+          alt="logo branco spotenu"
+        />
+
+        <Typography variant="h5" color="secondary">
           Login
         </Typography>
+
         <FormWrapper onSubmit={sendForm}>
           <TextField
             required
             variant="outlined"
             margin="normal"
             type="text"
-            label="Nome do Usuário ou e E-mail"
-            value={form.nicknameOrEmail}
+            label="Apelido ou e E-mail"
+            InputLabelProps={{ shrink: true }}
+            value={form.nicknameOrEmail || ""}
             name="nicknameOrEmail"
             onChange={changeForm}
           />
@@ -56,7 +64,8 @@ function LoginPage() {
             margin="normal"
             type="password"
             label="Senha"
-            value={form.password}
+            InputLabelProps={{ shrink: true }}
+            value={form.password || ""}
             name="password"
             onChange={changeForm}
           />
@@ -69,10 +78,9 @@ function LoginPage() {
           <Typography variant="subtitle1" component="p">
             Ainda não possui cadastro?
             <Button color="inherit" href="/signup">
-            Clique aqui
-          </Button>
+              Clique aqui
+            </Button>
           </Typography>
-        
         </RegisterWrapper>
       </LoginWrapper>
     </>

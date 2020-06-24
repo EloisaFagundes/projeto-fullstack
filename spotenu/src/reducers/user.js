@@ -1,8 +1,8 @@
-const initialState = {
+export const initialState = {
   allBands: [],
 };
 
-const users = (state = initialState, action) => {
+const usersBand = (state = initialState, action) => {
   switch (action.type) {
     case "SET_BANDS":
       return {
@@ -15,4 +15,4 @@ const users = (state = initialState, action) => {
   }
 };
 
-export default users;
+export default usersBand;

@@ -23,3 +23,9 @@ export const RegisterWrapper = styled.div`
   margin-top: 2rem;
   text-align: center;
 `;
+
+export const LogoStyled = styled.img`
+  width: 30%;
+  height: auto;
+  margin: 3rem auto;
+`;
