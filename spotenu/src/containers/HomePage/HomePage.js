@@ -1,9 +1,10 @@
 import React, { Component } from "react"
 import AppBar from "../../components/AppBar/AppBar"
-import Footer from "../../components/Footer/Footer"
 import styled from "styled-components"
 
-const bannerStyled = styled.div`
+
+
+const BannerImageStyled = styled.img `
 max-width: 100%;
 background-color: orange;
 `
@@ -17,10 +18,10 @@ class HomePage extends Component {
             <>
                 <AppBar />
             
-                <bannerStyled>
-                 <img src={require('../../images/banner-home-boy-microphone-black-white.jpg')} onClick="/"alt="imagem de um menino gritando em um microfone em preto e branco"/>
-                 </bannerStyled>
-                <Footer />
+                {/* <BannerStyled> */}
+                 <BannerImageStyled src={require('../../images/banner-desktop.png')} onClick="/"alt="imagem de um menino gritando em um microfone em preto e branco"/>
+                 {/* </BannerStyled> */}
+               
             </>
         )
     }

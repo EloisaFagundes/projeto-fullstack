@@ -1,34 +1,15 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
+
 import { login } from "../../actions/index";
-import AppBar from "../../components/AppBar/AppBar";
+
 import { Button, Typography, TextField } from "@material-ui/core";
-
-
-const LoginWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 2rem auto;
-  width: 30vw;
-  min-height: 80vh;
-  justify-content: center;
-  text-align: center;
-
-  @media screen and (max-device-width: 1200px) {
-    width: 90vw;
-  }
-`;
-
-const FormWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const RegisterWrapper = styled.div`
-  margin-top: 2rem;
-  text-align: center;
-`;
+import {
+  LoginWrapper,
+  FormWrapper,
+  RegisterWrapper,
+  LogoStyled,
+} from "./Styles";
 
 function LoginPage() {
   const [form, setForm] = useState({
@@ -49,26 +30,31 @@ function LoginPage() {
   const sendForm = (event) => {
     event.preventDefault();
     console.log(form);
-    dispatch(login(form))
-    setForm({})
+    dispatch(login(form));
+    setForm({});
   };
 
   return (
     <>
-      <AppBar />
-
       <LoginWrapper>
-        <Typography variant="h5" color="secondary" >
+        <LogoStyled
+          src={require("../../images/Novo Projeto (3).png")}
+          alt="logo branco spotenu"
+        />
+
+        <Typography variant="h5" color="secondary">
           Login
         </Typography>
+
         <FormWrapper onSubmit={sendForm}>
           <TextField
             required
             variant="outlined"
             margin="normal"
             type="text"
-            label="Nome do Usuário ou e E-mail"
-            value={form.nicknameOrEmail}
+            label="Apelido ou e E-mail"
+            InputLabelProps={{ shrink: true }}
+            value={form.nicknameOrEmail || ""}
             name="nicknameOrEmail"
             onChange={changeForm}
           />
@@ -78,7 +64,8 @@ function LoginPage() {
             margin="normal"
             type="password"
             label="Senha"
-            value={form.password}
+            InputLabelProps={{ shrink: true }}
+            value={form.password || ""}
             name="password"
             onChange={changeForm}
           />
@@ -91,13 +78,13 @@ function LoginPage() {
           <Typography variant="subtitle1" component="p">
             Ainda não possui cadastro?
             <Button color="inherit" href="/signup">
-            Clique aqui
-          </Button>
+              Clique aqui
+            </Button>
           </Typography>
-        
         </RegisterWrapper>
       </LoginWrapper>
     </>
   );
 }
+
 export default LoginPage;
