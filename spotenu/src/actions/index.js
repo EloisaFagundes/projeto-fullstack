@@ -8,6 +8,7 @@ const getToken = () => localStorage.getItem("token");
 // signups
 export const signupUser = (signupData) => async (dispatch) => {
   // console.log(signupData, "Cheguei signupUSER action")
+  
 
   try {
     const response = await axios.post(`${baseUrl}/signup/user`, signupData);

@@ -6,7 +6,6 @@ import { approveBand } from "../../actions";
 
 import {
   List,
-  ListItem,
   ListItemText,
   Button,
   Typography,
@@ -58,9 +57,7 @@ function ApproveBands() {
       <List component="nav" onSubmit={handleApprovation}>
         {isNotApproved.map((band) => (
           <CardStyled>
-            <ListItemText  key={band.id}>
-              {band.name}
-            </ListItemText>
+            <ListItemText key={band.id}>{band.name}</ListItemText>
             <Button
               type="onSubmit"
               color="primary"
@@ -73,7 +70,7 @@ function ApproveBands() {
         ))}
       </List>
       <TitleWrapper>
-        <Typography color="primary" >Bandas aprovadas</Typography>
+        <Typography color="primary">Bandas aprovadas</Typography>
       </TitleWrapper>
       <Divider variant="middle" color="secondary" />
       <List onSubmit={handleApprovation}>
