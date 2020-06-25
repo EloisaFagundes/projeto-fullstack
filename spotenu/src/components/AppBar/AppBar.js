@@ -27,11 +27,11 @@ function Appbar() {
         <div>
           <Button href="/aprovar-bandas" color="inherit">
             {" "}
-            Aprovar BANDAS{" "}
+            BANDAS{" "}
           </Button>
           <Button href="/cadastrar-generos" color="inherit">
             {" "}
-            Cadastrar GÊNEROS{" "}
+            GÊNEROS{" "}
           </Button>
           <IconButton href="/" color="secondary" onClick={logout}>
             <PowerSettingsNewRounded />
