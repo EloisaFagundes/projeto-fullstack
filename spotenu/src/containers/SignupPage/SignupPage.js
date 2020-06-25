@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AppBar from "../../components/AppBar/AppBar";
-import {
-  Button,
-  Typography,
-  TextField,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+import { loginForm } from "./constants";
+import { useDispatch } from "react-redux";
+import { signupUser, signupBand, signupAdmin } from "../../actions/index";
+
+import { Button, Typography, TextField, MenuItem } from "@material-ui/core";
 
 const SignupWrapper = styled.div`
   display: flex;
@@ -42,12 +40,29 @@ function SignupPage() {
     role: "",
     description: "",
   });
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [userRole, setUserRole] = useState("")
+  console.log(isAdmin)
 
   const roleTypes = [
     { role: "BAND", name: "ARTISTA" },
-    { role: "PAYINGUSER", name: "USUÁRIO PAGANTE" },
-    { role: "UNPAYINGUSER", name: "USUÁRIO GRATUITO" },
+    { role: "PAYINGLISTENER", name: "USUÁRIO PAGANTE" },
+    { role: "UNPAYINGISTENER", name: "USUÁRIO GRATUITO" },
   ];
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(userRole)
+    const user = localStorage.getItem("user")
+    const newUser = JSON.parse(user)
+    if(newUser) {
+    setUserRole(newUser.role)
+  }
+    if(userRole === "ADMIN") {
+      setIsAdmin(true)
+    }
+  }, [userRole])
 
   const changeSignupForm = (event) => {
     const { value, name } = event.target;
@@ -58,19 +73,50 @@ function SignupPage() {
   };
 
   const sendSignupForm = (event) => {
-    event.preventDefault();
-    console.log(formSignup);
+    event.preventDefault()
+
+    const {name, nickname, email, password, role} = formSignup
+    if(isAdmin) {
+      const formAdmin = {
+        name,
+        nickname,
+        email,
+        password,
+        role: "ADMIN",
+      }
+
+      dispatch(signupAdmin(formAdmin))
+    } 
+    else if (formSignup.role === "BAND") {
+      dispatch(signupBand(formSignup))
+    }
+    else {
+      const formUser = {
+        name,
+        nickname,
+        email,
+        password,
+        role
+      }
+      dispatch(signupUser(formUser))
+    }
+    setFormSignup({});
   };
 
   return (
     <>
       <AppBar />
+
       <SignupWrapper>
-      <Typography variant="h5" color="secondary">
+        <Typography variant="h5" color="secondary">
           Cadastro
         </Typography>
         <FormSignupWrapper onSubmit={sendSignupForm}>
-          <Select
+
+          {isAdmin  === false && 
+          <TextField
+            select
+            required
             onChange={changeSignupForm}
             value={formSignup.role}
             label="Tipo"
@@ -81,71 +127,42 @@ function SignupPage() {
             <MenuItem value="">Selecione uma opção</MenuItem>
             {roleTypes.map((role) => {
               return (
-                <MenuItem value={role.role} key={role.name}>
+                <MenuItem value={role.role} key={role.id}>
                   {role.name}
                 </MenuItem>
               );
             })}
-          </Select>
+          </TextField>
+}
 
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="Nome"
-            name="name"
-            value={formSignup.name}
-            onChange={changeSignupForm}
-          />
+          {loginForm.map((input) => {
+            return input.role === undefined ||
+              input.role === formSignup.role ? (
+              <TextField
+                key = {input.input}
+                required={input.required}
+                variant="outlined"
+                margin="normal"
+                type={input.type}
+                label={input.label}
+                name={input.name}
+                pattern={input.pattern}
+                title={input.title}
+                value={formSignup[input.name]}
+                onChange={changeSignupForm}
+                inputProps={{
+                  pattern: input.pattern,
+                  title: input.title,
+                }}
+              />
+            ) : (
+              <></>
+            );
+          })}
 
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="Apelido"
-            name="nickname"
-            value={formSignup.nickname}
-            onChange={changeSignupForm}
-          />
-
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="E-mail"
-            name="email"
-            value={formSignup.email}
-            onChange={changeSignupForm}
-          />
-
-          <TextField
-            required
-            variant="outlined"
-            margin="normal"
-            type="text"
-            label="Senha"
-            name="password"
-            value={formSignup.password}
-            onChange={changeSignupForm}
-          />
-
-          {formSignup.role === "BAND" && (
-            <TextField
-              required
-              variant="outlined"
-              margin="normal"
-              type="text"
-              label="Descrição"
-              name="description"
-              value={formSignup.description}
-              onChange={changeSignupForm}
-            />
-          )}
-
-          <Button type="onSubmit" color="primary" variant="contained">CADASTRAR</Button>
+          <Button type="onSubmit" color="primary" variant="contained">
+            CADASTRAR
+          </Button>
         </FormSignupWrapper>
       </SignupWrapper>
     </>

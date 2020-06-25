@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { login } from "../../actions/index";
 import AppBar from "../../components/AppBar/AppBar";
 import { Button, Typography, TextField } from "@material-ui/core";
+
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -33,6 +36,8 @@ function LoginPage() {
     password: "",
   });
 
+  const dispatch = useDispatch();
+
   const changeForm = (event) => {
     const { value, name } = event.target;
     setForm({
@@ -44,6 +49,8 @@ function LoginPage() {
   const sendForm = (event) => {
     event.preventDefault();
     console.log(form);
+    dispatch(login(form))
+    setForm({})
   };
 
   return (
@@ -60,7 +67,7 @@ function LoginPage() {
             variant="outlined"
             margin="normal"
             type="text"
-            label="nickname ou e-mail"
+            label="Nome do Usuário ou e E-mail"
             value={form.nicknameOrEmail}
             name="nicknameOrEmail"
             onChange={changeForm}
@@ -70,7 +77,7 @@ function LoginPage() {
             variant="outlined"
             margin="normal"
             type="password"
-            label="senha"
+            label="Senha"
             value={form.password}
             name="password"
             onChange={changeForm}
@@ -83,10 +90,11 @@ function LoginPage() {
         <RegisterWrapper>
           <Typography variant="subtitle1" component="p">
             Ainda não possui cadastro?
-          </Typography>
-          <Button color="inherit" href="/signup">
+            <Button color="inherit" href="/signup">
             Clique aqui
           </Button>
+          </Typography>
+        
         </RegisterWrapper>
       </LoginWrapper>
     </>
