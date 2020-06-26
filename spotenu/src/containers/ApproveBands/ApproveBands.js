@@ -14,6 +14,7 @@ import {
 import styled from "styled-components";
 import DoneAllOutlined from "@material-ui/icons/Done";
 import Divider from "@material-ui/core/Divider";
+import BackToThePreviousPage from "../../components/BackToThePreviousPage/BackToThePreviousPage";
 
 const CardStyled = styled(Card)`
   margin: 1rem;
@@ -50,6 +51,7 @@ function ApproveBands() {
   return (
     <>
       <Appbar />
+      <BackToThePreviousPage />
       <TitleWrapper>
         <Typography color="primary">Bandas aguardando aprovação</Typography>
       </TitleWrapper>
