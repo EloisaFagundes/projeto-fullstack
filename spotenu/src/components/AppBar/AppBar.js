@@ -5,10 +5,12 @@ import styled from "styled-components";
 
 import { Button, IconButton, AppBar, Toolbar } from "@material-ui/core";
 import { PowerSettingsNewRounded } from "@material-ui/icons";
+import HomePage from "../../containers/HomePage/HomePage";
 
 const ToolbarStyled = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
+  height: 8vh;
 `;
 
 function Appbar() {
@@ -27,11 +29,11 @@ function Appbar() {
         <div>
           <Button href="/aprovar-bandas" color="inherit">
             {" "}
-            Aprovar BANDAS{" "}
+            BANDAS{" "}
           </Button>
           <Button href="/cadastrar-generos" color="inherit">
             {" "}
-            Cadastrar GÊNEROS{" "}
+            GÊNEROS{" "}
           </Button>
           <IconButton href="/" color="secondary" onClick={logout}>
             <PowerSettingsNewRounded />
@@ -81,6 +83,7 @@ function Appbar() {
         <img
           src={require("../../images/Novo Projeto (2).png")}
           alt="logo branco spotenu"
+          onClick={() => "/home"}
         />
         <p>{buttons}</p>
       </ToolbarStyled>

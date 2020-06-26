@@ -8,7 +8,6 @@ const getToken = () => localStorage.getItem("token");
 // signups
 export const signupUser = (signupData) => async (dispatch) => {
   // console.log(signupData, "Cheguei signupUSER action")
-  
 
   try {
     const response = await axios.post(`${baseUrl}/signup/user`, signupData);
@@ -85,6 +84,57 @@ export const setBands = (bands) => ({
   },
 });
 
+export const setGenres = (genres) => ({
+  type: "SET_GENRES",
+  payload: {
+    genres,
+  },
+});
+
+export const getAllGenres = () => async (dispatch) => {
+  // console.log("Chegou lista de gêneros!!!!!!!!!!!!!!!!!!!!!");
+  try {
+    const response = await axios.get(`${baseUrl}/all-genres`, {
+      headers: {
+        authorization: getToken(),
+      },
+    });
+
+    dispatch(setGenres(response.data));
+    // console.log(response.data);
+  } catch (err) {
+    console.error(err?.response?.data?.message);
+    alert(
+      err?.response?.data?.message ||
+        "Não foi possível acessar a lista com todos os gêneros."
+    );
+  }
+};
+
+export const addMusicalGenres = (name) => async (dispatch) => {
+  // console.log("Chegou lista de gêneros!!!!!!!!!!!!!!!!!!!!!");
+  try {
+    await axios.post(
+      `${baseUrl}/register-genre`,
+      { name },
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
+
+    alert("Cadastro do novo gênero efetuado com sucesso!");
+    dispatch(getAllGenres())
+  } catch (err) {
+    console.error(err?.response?.data?.message);
+    alert(
+      err?.response?.data?.message ||
+        "Não foi possível acessar a lista com todas os gêneros."
+    );
+  }
+};
+
 export const getBands = () => async (dispatch) => {
   // console.log("Pega sua lista de artistas.");
   try {
@@ -107,14 +157,18 @@ export const getBands = () => async (dispatch) => {
 export const approveBand = (id) => async (dispatch) => {
   // console.log("Pega sua lista de artistas para aprovar.");
   try {
-    const response = await axios.post(`${baseUrl}/approve-band/${id}`, {}, {
-      headers: {
-        authorization: getToken(),
-      },
-    });
+    const response = await axios.post(
+      `${baseUrl}/approve-band/${id}`,
+      {},
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
 
     dispatch(getBands(response.data));
-    console.log(response.data);
+    // console.log(response.data);
   } catch (err) {
     console.error(err?.response?.data?.message);
 
