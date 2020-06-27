@@ -1,6 +1,6 @@
 import { GenreBusiness } from "../business/GenreBusiness";
-import { UserDatabase } from "../data/UserDatabase";
 import { GenreDatabase } from "../data/GenreDatabase";
+import { UserDatabase } from "../data/UserDatabase";
 import { TokenGenerator } from "../services/tokenGenerator";
 import { IdGenerator } from "../services/idGenerator";
 import { Request, Response } from "express";
