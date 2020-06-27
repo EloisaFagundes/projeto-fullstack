@@ -3,6 +3,8 @@ import express from "express";
 import {AddressInfo} from "net";
 import { userRouter } from "./router/UserRouter";
 import { genreRoutes } from "./router/GenreRoutes";
+import { albumRoutes } from "./router/AlbumRoutes";
+
 const app = express();
 
 app.use(cors())
@@ -10,6 +12,7 @@ app.use(express.json());
 
 app.use("/", userRouter);
 app.use("/", genreRoutes);
+app.use("/", albumRoutes);
 
 
 const server = app.listen(3001, () => {
