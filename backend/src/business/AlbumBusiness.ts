@@ -57,7 +57,7 @@ export class AlbumBusiness {
     );
   }
 
-  public async getAlbunsByBandId(token: string, albumId: string) {
+  public async getAlbunsByBandId(token: string) {
     const userLoggedData = this.tokenGenerator.verify(token);
     const userLogged = await this.userDatabase.getUserById(userLoggedData.id);
 

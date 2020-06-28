@@ -38,7 +38,6 @@ export class GenreDatabase extends BaseDataBase {
       .into(this.tableName);
   }
 
-  // Mudei <any> para <Genre[]> para dar find em uma array  
   
   public async getAllMusicalGenres(): Promise<Genre[]> {
     const result = await super.setConnection().raw(`

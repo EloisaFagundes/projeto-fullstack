@@ -45,7 +45,7 @@ export class UserController {
 
   public async signupAdmin(req: Request, res: Response) {
     const { name, email, nickname, password } = req.body;
-    const token = req.headers.authorization as string;
+    const token = req.headers.authorization || (req.headers.Authorization as string);
     try {
       const result = await UserController.UserBusiness.signupAdmin(
         name,
@@ -80,7 +80,7 @@ export class UserController {
   }
 
   public async getAllBandsToBeApproved(req: Request, res: Response) {
-    const token = req.headers.authorization as string;
+    const token = req.headers.authorization || (req.headers.Authorization as string);
 
     try {
       const result = await UserController.UserBusiness.getAllBandsToBeApproved(
@@ -96,7 +96,7 @@ export class UserController {
 
 
   public async approveBand(req: Request, res: Response) {
-    const token = req.headers.authorization as string;
+    const token = req.headers.authorization || (req.headers.Authorization as string);
     const id = req.params.id
 
     try {
