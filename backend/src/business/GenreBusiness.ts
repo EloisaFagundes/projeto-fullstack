@@ -45,11 +45,7 @@ export class GenreBusiness {
     await this.genreDatabase.addMusicalGenre(newMusicalGenre);
   }
 
-
-  
-
-  public async getAllMusicalGenres(token:string) {
-
+  public async getAllMusicalGenres(token: string) {
     const userInfo = this.tokenGenerator.verify(token);
     const user = await this.userDatabase.getUserById(userInfo.id);
 
@@ -65,24 +61,13 @@ export class GenreBusiness {
       );
     }
 
-    const musicalGenres = await this.genreDatabase.getAllMusicalGenres()
+    const musicalGenres = await this.genreDatabase.getAllMusicalGenres();
 
     return musicalGenres.map(
-      (genres: {
-        getId: () => any;
-        getName: () => any;
-      }) => ({
+      (genres: { getId: () => any; getName: () => any }) => ({
         id: genres.getId(),
         name: genres.getName(),
       })
     );
-
-
   }
-    
-
-
-
-
-  }
-
+}

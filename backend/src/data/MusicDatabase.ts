@@ -15,9 +15,9 @@ export class MusicDatabase extends BaseDataBase {
         WHERE album_id = "${albumId}"
         `);
 
-    console.log(result[0])
     return result[0].map((name: any) => this.toModel(name));
   }
+  
 
   public async createMusic(music: Music): Promise<void> {
     await super

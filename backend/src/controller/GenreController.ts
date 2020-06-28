@@ -15,7 +15,7 @@ export class GenreController {
 
   public async addMusicalGenre(req: Request, res: Response) {
     const { name } = req.body;
-    const token = req.headers.authorization as string;
+    const token = req.headers.authorization || (req.headers.Authorization as string);
 
     try {
       await GenreController.GenreBusiness.addMusicalGenre(name, token);
@@ -26,7 +26,7 @@ export class GenreController {
   }
 
   public async getAllMusicalGenres(req: Request, res: Response) {
-    const token = req.headers.authorization as string;
+    const token = req.headers.authorization || (req.headers.Authorization as string);
 
     try {
       const result = await GenreController.GenreBusiness.getAllMusicalGenres(

@@ -93,7 +93,6 @@ export class UserBusiness {
 
     await this.userDatabase.createBandUser(user);
 
-    // const acessToken = this.tokenGenerator.generate({ id, role })
     return { user };
   }
 
@@ -207,7 +206,6 @@ export class UserBusiness {
 
     const artists = await this.userDatabase.getAllBandsToBeApproved();
 
-    // console.log(bands);
 
     return artists.map(
       (band: {
