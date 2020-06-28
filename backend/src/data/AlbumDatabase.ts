@@ -9,12 +9,12 @@ export class AlbumDatabase extends BaseDataBase {
     return dbModel && new Album(dbModel.id, dbModel.band_id, dbModel.name);
   }
 
-  public async getAlbumById(albumId: string): Promise<Album | undefined> {
+  public async getAlbumById(id: string): Promise<Album | undefined> {
     const result = await super
       .setConnection()
       .select("*")
       .from(this.tableName)
-      .where({ album_id: albumId });
+      .where({ id });
 
     return this.toModel(result[0]);
   }
