@@ -9,24 +9,11 @@ import {
   ListItemText,
   Button,
   Typography,
-  Card,
+  Divider,
 } from "@material-ui/core";
-import styled from "styled-components";
 import DoneAllOutlined from "@material-ui/icons/Done";
-import Divider from "@material-ui/core/Divider";
 import BackToThePreviousPage from "../../components/BackToThePreviousPage/BackToThePreviousPage";
-
-const CardStyled = styled(Card)`
-  margin: 1rem;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const TitleWrapper = styled.div`
-  margin: 1rem;
-`;
+import { CardStyled, TitleWrapper } from "./Styles";
 
 function ApproveBands() {
   const dispatch = useDispatch();

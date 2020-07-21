@@ -5,7 +5,7 @@ class UserPage extends Component {
     render() {
         return(
             <div>
-                <p>appbar</p>
+                <p>user page EM CONSTRUÇÃO</p>
             </div>
         )
     }
