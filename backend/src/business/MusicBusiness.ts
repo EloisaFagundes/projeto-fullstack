@@ -58,4 +58,24 @@ export class MusicBusiness {
     const music = new Music(id, albumId, name);
     await this.musicDatabase.createMusic(music);
   }
+
+  public async getAllMusicsByAlbumId(token: string, albumId: string) {
+    const userInfo = this.tokenGenerator.verify(token);
+    const user = await this.userDatabase.getUserById(userInfo.id);
+
+    if (!user) {
+      throw new NotFoundError(
+        "Não foi possível encontrar esse usuário. É necessário realizar login."
+      );
+    }
+
+    const musicsByAlbum = await this.musicDatabase.getMusicsByAlbumId(albumId);
+
+    return musicsByAlbum.map(
+      (music: {  getId: () => any; getName: () => any }) => ({
+        id: music.getId(),
+        name: music.getName(),
+      })
+    );
+  }
 }

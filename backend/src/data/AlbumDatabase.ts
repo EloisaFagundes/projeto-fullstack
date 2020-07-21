@@ -33,14 +33,12 @@ export class AlbumDatabase extends BaseDataBase {
     return this.toModel(result[0]);
   }
 
-  public async getAlbunsByBandId(bandId: string): Promise<Album | undefined> {
-    const result = await super
-      .setConnection()
-      .select("*")
-      .from(this.tableName)
-      .where({ band_id: bandId });
+  public async getAlbunsByBandId(bandId: string): Promise<Album[]> {
+    const result = await super.setConnection().raw(`
+      SELECT * FROM ${this.tableName} WHERE band_id = "${bandId}"
+      `);
 
-    return this.toModel(result[0]);
+    return result[0].map((res: any) => this.toModel(res));
   }
 
   public async createAlbum(album: Album): Promise<void> {

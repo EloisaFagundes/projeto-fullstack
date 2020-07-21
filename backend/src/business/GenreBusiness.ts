@@ -55,12 +55,6 @@ export class GenreBusiness {
       );
     }
 
-    if (user.getRole() !== UserRole.ADMIN) {
-      throw new GenericError(
-        "Seu usuário não ter permissão para vizualizar essa página."
-      );
-    }
-
     const musicalGenres = await this.genreDatabase.getAllMusicalGenres();
 
     return musicalGenres.map(

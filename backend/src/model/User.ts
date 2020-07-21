@@ -41,7 +41,8 @@ export class User {
   }
 
   public getApproved(): boolean {
-    return this.approved
+    const approvedBoolean = Boolean(this.approved)
+    return approvedBoolean
   }
 }
 
