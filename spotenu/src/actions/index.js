@@ -125,7 +125,7 @@ export const addMusicalGenres = (name) => async (dispatch) => {
     );
 
     alert("Cadastro do novo gênero efetuado com sucesso!");
-    dispatch(getAllGenres())
+    dispatch(getAllGenres());
   } catch (err) {
     console.error(err?.response?.data?.message);
     alert(

@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import { Button, IconButton, AppBar, Toolbar } from "@material-ui/core";
 import { PowerSettingsNewRounded } from "@material-ui/icons";
-import HomePage from "../../containers/HomePage/HomePage";
 
 const ToolbarStyled = styled(Toolbar)`
   display: flex;
@@ -44,8 +43,12 @@ function Appbar() {
     case "BAND":
       buttons = (
         <div>
-          <Button color="inherit">Criar Álbuns</Button>
-          <Button color="inherit">Criar Músicas</Button>
+          <Button color="inherit" href="/band-albuns">
+            Álbuns
+          </Button>
+          <Button color="inherit" href="/band-musics">
+            Músicas
+          </Button>
           <IconButton href="/" color="secondary" onClick={logout}>
             <PowerSettingsNewRounded />
           </IconButton>
@@ -66,7 +69,7 @@ function Appbar() {
       buttons = (
         <div>
           <Button>Usuário Gratuito</Button>;
-          <IconButton color="secondary" onClick={logout}>
+          <IconButton color="secondary" href="/" onClick={logout}>
             <PowerSettingsNewRounded />
           </IconButton>
         </div>

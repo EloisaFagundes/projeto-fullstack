@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBands,getAllGenres } from "../actions/index";
-
+import { getBands, getAllGenres } from "../actions/index";
+import { getBandAlbuns } from "../actions/album";
 
 export const useRoleTypes = () => {
   const [userRole, setUserRole] = useState("");
@@ -40,3 +40,14 @@ export const useGenres = () => {
   return allMuscialGenres;
 };
 
+export const useBandsAlbuns = () => {
+  const { bandAllAlbuns } = useSelector((state) => state.albuns);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBandAlbuns());
+  }, [dispatch]);
+
+  // console.log(bandAllAlbuns);
+  return bandAllAlbuns;
+};
