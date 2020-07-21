@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import { useRoleTypes } from "../../utils/customHooks";
 
-import styled from "styled-components";
-
-import { Button, IconButton, AppBar, Toolbar } from "@material-ui/core";
+import { ToolbarStyled } from "./Styles";
+import { Button, IconButton, AppBar } from "@material-ui/core";
 import { PowerSettingsNewRounded } from "@material-ui/icons";
-
-const ToolbarStyled = styled(Toolbar)`
-  display: flex;
-  justify-content: space-between;
-  height: 8vh;
-`;
 
 function Appbar() {
   const userRole = useRoleTypes();
