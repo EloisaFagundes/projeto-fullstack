@@ -2,45 +2,17 @@ import React, { useState } from "react";
 import Appbar from "../../components/AppBar/AppBar";
 import BackToThePreviousPage from "../../components/BackToThePreviousPage/BackToThePreviousPage";
 
-import styled from "styled-components";
+import { MusicContentWrapper, FormMusicWrapper } from "./Styles";
 import {
   Button,
   Typography,
   TextField,
   MenuItem,
-  Select,
-  Divider,
-  List,
   ListItemText,
-  Card,
 } from "@material-ui/core";
 import { useBandsAlbuns } from "../../utils/customHooks";
 import { useDispatch } from "react-redux";
 import { addMusicToTheAlbum } from "../../actions/music";
-
-export const AlbumWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 2rem auto;
-  width: 30vw;
-  /* min-height: 80vh; */
-  justify-content: center;
-  text-align: center;
-
-  @media screen and (max-device-width: 1200px) {
-    width: 90vw;
-  }
-`;
-
-export const FormAlbumWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const RegisterWrapper = styled.div`
-  margin-top: 2rem;
-  text-align: center;
-`;
 
 function BandMusicsPage() {
   const [musicName, setMusicName] = useState("");
@@ -57,26 +29,25 @@ function BandMusicsPage() {
   };
 
   const addNewMusic = (event) => {
-    event.preventDefault()
-    const info =  { name: musicName, albumId: albumId }
-    dispatch(addMusicToTheAlbum(info))
-    setMusicName("")
-    setAlbumId([])
-    console.log(info)
-  }
-
+    event.preventDefault();
+    const info = { name: musicName, albumId: albumId };
+    dispatch(addMusicToTheAlbum(info));
+    setMusicName("");
+    setAlbumId([]);
+    console.log(info);
+  };
 
   return (
     <>
       <Appbar />
       <BackToThePreviousPage />
 
-      <AlbumWrapper>
+      <MusicContentWrapper>
         <Typography variant="h5" color="primary">
           Cadastrar Música
         </Typography>
 
-        <FormAlbumWrapper onSubmit={addNewMusic}>
+        <FormMusicWrapper onSubmit={addNewMusic}>
           <TextField
             required
             onChange={changeInputMusic}
@@ -108,8 +79,8 @@ function BandMusicsPage() {
           <Button type="onSubmit" color="primary" variant="contained">
             CADASTRAR
           </Button>
-        </FormAlbumWrapper>
-      </AlbumWrapper>
+        </FormMusicWrapper>
+      </MusicContentWrapper>
     </>
   );
 }
