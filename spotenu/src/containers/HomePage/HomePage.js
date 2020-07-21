@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import AppBar from "../../components/AppBar/AppBar";
 import styled from "styled-components";
 
@@ -24,18 +24,16 @@ export const Backdrop = styled.div`
   z-index: 1;
 `;
 
-class HomePage extends Component {
-  render() {
+function HomePage() {
+  
     return (
       <>
         <AppBar />
 
         <BannerStyled>
-          {/* <Backdrop /> */}
-          {/* <BannerImageStyled src={require('../../images/banner-desktop.png')} onClick="/"alt="imagem de um menino gritando em um microfone em preto e branco"/> */}
         </BannerStyled>
       </>
     );
-  }
+  
 }
 export default HomePage;

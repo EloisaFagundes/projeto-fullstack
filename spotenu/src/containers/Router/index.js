@@ -9,7 +9,8 @@ import UserPage from "../UserPage/UserPage"
 import AdminPage from "../AdminPage/AdminPage"
 import ApproveBands from "../ApproveBands/ApproveBands"
 import RegisterGenres from "../RegisterGenres/RegisterGenres"
-import BandPage from "../BandPage/BandPage"
+import BandAlbunsPage from "../BandAlbunsPage/BandAlbunsPage"
+import BandMusicsPage from "../BandMusicsPage/BandMusicsPage"
 
 
 export const routes = {
@@ -20,7 +21,8 @@ export const routes = {
     admin: "/admin",
     approveBands: "/aprovar-bandas",
     registerGenres:"/cadastrar-generos",
-    band: "/band"
+    bandAlbuns: "/band-albuns",
+    bandMusics: "/band-musics"
 }
 
 function Router(props) {
@@ -36,7 +38,8 @@ function Router(props) {
                 <Route exact path={routes.admin} component={AdminPage} />
                 <Route exact path={routes.approveBands} component={ApproveBands} />
                 <Route exact path={routes.registerGenres} component={RegisterGenres} />
-                <Route exact path={routes.band} component={BandPage} />
+                <Route exact path={routes.bandAlbuns} component={BandAlbunsPage} />
+                <Route exact path={routes.bandMusics} component={BandMusicsPage} />
 
                 <Route path="*" component={() => "Página não encontrada"} />
             </Switch>
