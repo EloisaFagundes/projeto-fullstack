@@ -31,6 +31,7 @@ export class UserBusiness {
       throw new NotFoundError("Usuário e/ou senha inválidos");
     }
 
+    console.log(user, "chegou console getApproved")
     if (user.getApproved() === false) {
       throw new GenericError(
         "O usuário precisa de autorização de um administrador para logar."
@@ -219,7 +220,7 @@ export class UserBusiness {
         name: band.getName(),
         email: band.getEmail(),
         nickname: band.getNickname(),
-        approved: band.getApproved() == true ? true : false,
+        approved: band.getApproved()
       })
     );
   }

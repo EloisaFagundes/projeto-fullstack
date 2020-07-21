@@ -4,7 +4,7 @@ import { AlbumDatabase } from "../data/AlbumDatabase";
 import { UserDatabase } from "../data/UserDatabase";
 import { TokenGenerator } from "../services/tokenGenerator";
 import { IdGenerator } from "../services/idGenerator";
-import { Request, Response } from "express";
+import { Request, Response} from "express";
 
 export class MusicController {
   private static MusicBusiness = new MusicBusiness(
