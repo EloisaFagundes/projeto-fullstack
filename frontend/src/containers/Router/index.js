@@ -6,7 +6,6 @@ import HomePage from "../HomePage/HomePage"
 import SignupPage from "../SignupPage/SignupPage"
 import LoginPage from "../LoginPage/LoginPage"
 import UserPage from "../UserPage/UserPage"
-import AdminPage from "../AdminPage/AdminPage"
 import ApproveBands from "../ApproveBands/ApproveBands"
 import RegisterGenres from "../RegisterGenres/RegisterGenres"
 import BandAlbunsPage from "../BandAlbunsPage/BandAlbunsPage"
@@ -35,7 +34,6 @@ function Router(props) {
                 <Route exact path={routes.signup} component={SignupPage} />
                 <Route exact path={routes.root} component={LoginPage} />
                 <Route exact path={routes.user} component={UserPage} />
-                <Route exact path={routes.admin} component={AdminPage} />
                 <Route exact path={routes.approveBands} component={ApproveBands} />
                 <Route exact path={routes.registerGenres} component={RegisterGenres} />
                 <Route exact path={routes.bandAlbuns} component={BandAlbunsPage} />
