@@ -3,6 +3,9 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001";
 const getToken = () => localStorage.getItem("token");
 
+
+// band funcionalities
+
 export const setAllAlbunsBand = (albuns) => ({
   type: "SET_ALL_BAND_ALBUNS",
   payload: {
