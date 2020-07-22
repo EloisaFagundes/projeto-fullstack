@@ -7,8 +7,6 @@ dotenv.config();
 export abstract class BaseDataBase {
   protected abstract tableName: string;
 
-
-
   private static connection: Knex | null = null;
 
   protected setConnection(): Knex {

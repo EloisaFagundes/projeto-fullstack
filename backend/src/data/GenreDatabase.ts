@@ -38,17 +38,10 @@ export class GenreDatabase extends BaseDataBase {
       .into(this.tableName);
   }
 
-  
   public async getAllMusicalGenres(): Promise<Genre[]> {
     const result = await super.setConnection().raw(`
     SELECT * FROM ${this.tableName} 
-    `)
-    return result[0].map((name:any) => this.toModel(name))
-    //  .select("*")
-    //  .from(this.tableName);
-    //  console.log(result)
-    // return result
-    // // .map((name:any) => this.toModel(name));
-    
+    `);
+    return result[0].map((name: any) => this.toModel(name));
   }
 }
