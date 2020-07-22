@@ -17,7 +17,6 @@ export class MusicDatabase extends BaseDataBase {
 
     return result[0].map((name: any) => this.toModel(name));
   }
-  
 
   public async createMusic(music: Music): Promise<void> {
     await super

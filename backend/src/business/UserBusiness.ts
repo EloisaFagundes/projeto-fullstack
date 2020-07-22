@@ -31,7 +31,6 @@ export class UserBusiness {
       throw new NotFoundError("Usuário e/ou senha inválidos");
     }
 
-    console.log(user, "chegou console getApproved")
     if (user.getApproved() === false) {
       throw new GenericError(
         "O usuário precisa de autorização de um administrador para logar."
@@ -51,7 +50,6 @@ export class UserBusiness {
       id: user.getId(),
       role: user.getRole(),
     });
-    console.log(user);
     return { acessToken, user };
   }
 
@@ -207,7 +205,6 @@ export class UserBusiness {
 
     const artists = await this.userDatabase.getAllBandsToBeApproved();
 
-
     return artists.map(
       (band: {
         getId: () => any;
@@ -220,13 +217,12 @@ export class UserBusiness {
         name: band.getName(),
         email: band.getEmail(),
         nickname: band.getNickname(),
-        approved: band.getApproved()
+        approved: band.getApproved(),
       })
     );
   }
 
   public async approveBand(token: string, id: string) {
-
     const userLoggedData = this.tokenGenerator.verify(token);
 
     const userLogged = await this.userDatabase.getUserById(userLoggedData.id);
@@ -237,17 +233,16 @@ export class UserBusiness {
       );
     }
 
-    const band = await this.userDatabase.getUserById(id)
+    const band = await this.userDatabase.getUserById(id);
 
-    if(!band) {
-      throw new NotFoundError("Artista não encontrado.")
+    if (!band) {
+      throw new NotFoundError("Artista não encontrado.");
     }
 
-    if(band.getApproved() == true) {
-      throw new GenericError("Esse artista já foi aprovado.")
+    if (band.getApproved() == true) {
+      throw new GenericError("Esse artista já foi aprovado.");
     }
 
-    await this.userDatabase.approveBand(id)
+    await this.userDatabase.approveBand(id);
   }
 }
-
