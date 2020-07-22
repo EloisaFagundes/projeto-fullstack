@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBands, getAllGenres } from "../actions/index";
+// import { getBands, getAllGenres } from "../actions/index";
+import { getBands } from "../actions/bands";
+import { getAllGenres } from "../actions/genres";
 import { getBandAlbuns } from "../actions/album";
 
 export const useRoleTypes = () => {
@@ -23,7 +25,6 @@ export const useBands = () => {
     dispatch(getBands());
   }, [dispatch]);
 
-  // console.log(allBands);
   return allBands;
 };
 
@@ -34,8 +35,6 @@ export const useGenres = () => {
   useEffect(() => {
     dispatch(getAllGenres());
   }, [dispatch]);
-
-  // console.log(allMuscialGenres);
 
   return allMuscialGenres;
 };
@@ -48,6 +47,5 @@ export const useBandsAlbuns = () => {
     dispatch(getBandAlbuns());
   }, [dispatch]);
 
-  // console.log(bandAllAlbuns);
   return bandAllAlbuns;
 };

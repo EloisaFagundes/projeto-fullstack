@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addMusicalGenres } from "../../actions/index";
+// import { addMusicalGenres } from "../../actions/index";
+import { addMusicalGenres } from "../../actions/genres";
 import { useGenres } from "../../utils/customHooks";
 import Appbar from "../../components/AppBar/AppBar";
 

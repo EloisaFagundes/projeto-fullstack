@@ -6,8 +6,8 @@ const baseUrl = "http://localhost:3001";
 const getToken = () => localStorage.getItem("token");
 
 // signups
+
 export const signupUser = (signupData) => async (dispatch) => {
-  // console.log(signupData, "Cheguei signupUSER action")
 
   try {
     const response = await axios.post(`${baseUrl}/signup/user`, signupData);
@@ -25,7 +25,6 @@ export const signupUser = (signupData) => async (dispatch) => {
 };
 
 export const signupBand = (signupData) => async (dispatch) => {
-  // console.log(signupData, "Cheguei signupBAND action")
 
   try {
     const response = await axios.post(`${baseUrl}/signup/band`, signupData);
@@ -42,7 +41,6 @@ export const signupBand = (signupData) => async (dispatch) => {
 };
 
 export const signupAdmin = (signupData) => async (dispatch) => {
-  // console.log(signupData, "Cheguei signupADMIN action");
 
   try {
     await axios.post(`${baseUrl}/signup/admin`, signupData, {
@@ -60,7 +58,6 @@ export const signupAdmin = (signupData) => async (dispatch) => {
 
 // login
 export const login = (info) => async (dispatch) => {
-  // console.log(info, "Cheguei login action")
 
   try {
     const response = await axios.post(`${baseUrl}/login`, info);
@@ -76,105 +73,4 @@ export const login = (info) => async (dispatch) => {
   }
 };
 
-// admin functions
-export const setBands = (bands) => ({
-  type: "SET_BANDS",
-  payload: {
-    bands,
-  },
-});
 
-export const setGenres = (genres) => ({
-  type: "SET_GENRES",
-  payload: {
-    genres,
-  },
-});
-
-export const getAllGenres = () => async (dispatch) => {
-  // console.log("Chegou lista de gêneros!!!!!!!!!!!!!!!!!!!!!");
-  try {
-    const response = await axios.get(`${baseUrl}/all-genres`, {
-      headers: {
-        authorization: getToken(),
-      },
-    });
-
-    dispatch(setGenres(response.data));
-    // console.log(response.data);
-  } catch (err) {
-    console.error(err?.response?.data?.message);
-    alert(
-      err?.response?.data?.message ||
-        "Não foi possível acessar a lista com todos os gêneros."
-    );
-  }
-};
-
-export const addMusicalGenres = (name) => async (dispatch) => {
-  // console.log("Chegou lista de gêneros!!!!!!!!!!!!!!!!!!!!!");
-  try {
-    await axios.post(
-      `${baseUrl}/register-genre`,
-      { name },
-      {
-        headers: {
-          authorization: getToken(),
-        },
-      }
-    );
-
-    alert("Cadastro do novo gênero efetuado com sucesso!");
-    dispatch(getAllGenres());
-  } catch (err) {
-    console.error(err?.response?.data?.message);
-    alert(
-      err?.response?.data?.message ||
-        "Não foi possível acessar a lista com todas os gêneros."
-    );
-  }
-};
-
-export const getBands = () => async (dispatch) => {
-  // console.log("Pega sua lista de artistas.");
-  try {
-    const response = await axios.get(`${baseUrl}/all-bands`, {
-      headers: {
-        authorization: getToken(),
-      },
-    });
-    dispatch(setBands(response.data));
-    // console.log(response.data);
-  } catch (err) {
-    console.error(err?.response?.data?.message);
-    alert(
-      err?.response?.data?.message ||
-        "Não foi possível acessar a lista com todas as bandas. Erro FRONT"
-    );
-  }
-};
-
-export const approveBand = (id) => async (dispatch) => {
-  // console.log("Pega sua lista de artistas para aprovar.");
-  try {
-    const response = await axios.post(
-      `${baseUrl}/approve-band/${id}`,
-      {},
-      {
-        headers: {
-          authorization: getToken(),
-        },
-      }
-    );
-
-    dispatch(getBands(response.data));
-    // console.log(response.data);
-  } catch (err) {
-    console.error(err?.response?.data?.message);
-
-    alert(
-      err?.response?.data?.message ||
-        "Não foi possível acessar a lista de bandas cadastradas para aprovar."
-    );
-  }
-};

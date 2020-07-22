@@ -3,6 +3,8 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001";
 const getToken = () => localStorage.getItem("token");
 
+// band funcionalities
+
 export const addMusicToTheAlbum = (album) => async (dispatch) => {
     console.log(album, "Cheguei add musica action");
   try {

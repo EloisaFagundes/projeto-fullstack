@@ -2,7 +2,8 @@ import React from "react";
 import { useBands } from "../../utils/customHooks";
 import Appbar from "../../components/AppBar/AppBar";
 import { useDispatch } from "react-redux";
-import { approveBand } from "../../actions";
+// import { approveBand } from "../../actions";
+import { approveBand } from "../../actions/bands";
 
 import {
   List,
