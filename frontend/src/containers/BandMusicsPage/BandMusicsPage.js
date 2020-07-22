@@ -21,11 +21,8 @@ function BandMusicsPage() {
 
   const dispatch = useDispatch();
 
-  console.log(allAlbuns);
-
   const changeInputMusic = (event) => {
     setMusicName(event.target.value);
-    console.log(musicName);
   };
 
   const addNewMusic = (event) => {
@@ -34,7 +31,6 @@ function BandMusicsPage() {
     dispatch(addMusicToTheAlbum(info));
     setMusicName("");
     setAlbumId([]);
-    console.log(info);
   };
 
   return (

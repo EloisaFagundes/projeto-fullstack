@@ -33,11 +33,8 @@ function BandAlbunsPage() {
 
   const dispatch = useDispatch();
 
-  console.log(albuns);
-
   const changeNewAlbumInput = (event) => {
     setAlbumName(event.target.value);
-    console.log(albumName);
   };
 
   const addNewAlbum = (event) => {
@@ -47,8 +44,6 @@ function BandAlbunsPage() {
     setAlbumName("");
     setGenreId([]);
   };
-
-  console.log(genreId);
 
   return (
     <>
@@ -82,9 +77,7 @@ function BandAlbunsPage() {
               multiple
               label="Gênero Musical"
               labelId="demo-simple-select-outlined-label"
-              // InputLabelProps={{ shrink: true }}
               name="gênero"
-              // input={<OutlinedInput />}
               renderValue={() =>
                 genreId.length === 1
                   ? "1 gênero selecionado"

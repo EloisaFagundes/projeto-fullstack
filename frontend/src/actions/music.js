@@ -6,7 +6,6 @@ const getToken = () => localStorage.getItem("token");
 // band funcionalities
 
 export const addMusicToTheAlbum = (album) => async (dispatch) => {
-    console.log(album, "Cheguei add musica action");
   try {
     await axios.post(`${baseUrl}/register-music`, album, {
       headers: {

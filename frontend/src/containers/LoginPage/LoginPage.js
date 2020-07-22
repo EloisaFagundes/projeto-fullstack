@@ -29,7 +29,6 @@ function LoginPage() {
 
   const sendForm = (event) => {
     event.preventDefault();
-    console.log(form);
     dispatch(login(form));
     setForm({});
   };

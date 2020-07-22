@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { addMusicalGenres } from "../../actions/index";
 import { addMusicalGenres } from "../../actions/genres";
 import { useGenres } from "../../utils/customHooks";
 import Appbar from "../../components/AppBar/AppBar";
@@ -23,7 +22,6 @@ import { DoneAllOutlined } from "@material-ui/icons";
 import BackToThePreviousPage from "../../components/BackToThePreviousPage/BackToThePreviousPage";
 
 function RegisterGenres() {
-  //   const [changeGenre, setChangeGenre] = useState("");
   const [genreName, setGenreName] = useState("");
 
   const isCadastred = useGenres();
@@ -32,7 +30,6 @@ function RegisterGenres() {
 
   const changeGenreInput = (event) => {
     setGenreName(event.target.value);
-    // console.log(genreName);
   };
 
   const sendMusicalGenre = (event) => {
@@ -40,12 +37,10 @@ function RegisterGenres() {
     const nameUpperCase = genreName.toUpperCase();
     dispatch(addMusicalGenres(nameUpperCase));
     setGenreName("");
-    // console.log(nameUpperCase);
   };
 
   const handleCadastredGenres = (event) => {
     event.preventDefault();
-    //   console.log(useGenres)
   };
 
   return (
