@@ -2,7 +2,6 @@ import React from "react";
 import { useBands } from "../../utils/customHooks";
 import Appbar from "../../components/AppBar/AppBar";
 import { useDispatch } from "react-redux";
-// import { approveBand } from "../../actions";
 import { approveBand } from "../../actions/bands";
 
 import {
@@ -23,16 +22,11 @@ function ApproveBands() {
   const isApproved = allBands.filter((band) => band.approved === true);
   const isNotApproved = allBands.filter((band) => band.approved === false);
 
-  console.log(isNotApproved);
-  console.log(isApproved);
-
   const handleApprovation = (event) => {
     event.preventDefault();
-    console.log(useBands);
   };
 
   const onclickToApprove = (band) => {
-    console.log(band);
     dispatch(approveBand(band.id));
   };
 

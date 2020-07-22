@@ -1,7 +1,6 @@
 import React from "react";
 import AppBar from "../../components/AppBar/AppBar";
-import { BannerStyled, Backdrop } from "./Styles";
-
+import { BannerStyled } from "./Styles";
 
 function HomePage() {
   return (

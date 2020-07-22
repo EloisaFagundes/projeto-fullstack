@@ -25,7 +25,6 @@ function SignupPage() {
   });
   const [isAdmin, setIsAdmin] = useState(false);
   const userRole = useRoleTypes();
-  // console.log(isAdmin)
 
   const roleTypes = [
     { role: "BAND", name: "ARTISTA" },
@@ -50,8 +49,6 @@ function SignupPage() {
   };
 
   const sendSignupForm = (event) => {
-    
-
     const { name, nickname, email, password, role } = formSignup;
     if (isAdmin) {
       const formAdmin = {
@@ -104,7 +101,6 @@ function SignupPage() {
               InputLabelProps={{ shrink: true }}
               name="role"
               variant="outlined"
-              // margin="normal"
             >
               <MenuItem value="">Selecione uma opção</MenuItem>
               {roleTypes.map((role) => {
@@ -152,7 +148,7 @@ function SignupPage() {
           <RegisterWrapper>
             <Typography variant="subtitle1" component="p">
               Já possui cadastro?
-              <Button color="inherit" href="/" >
+              <Button color="inherit" href="/">
                 Volte para o Login
               </Button>
             </Typography>

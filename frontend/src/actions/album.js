@@ -31,7 +31,6 @@ export const getBandAlbuns = () => async (dispatch) => {
 };
 
 export const addAlbum = (info) => async (dispatch) => {
-  console.log(info, "Cheguei add album action");
   try {
      await axios.post(`${baseUrl}/register-album`, info, {
       headers: {
