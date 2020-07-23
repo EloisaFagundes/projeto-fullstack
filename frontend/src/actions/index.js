@@ -2,7 +2,7 @@ import axios from "axios";
 import { routes } from "../containers/Router/index";
 import { push } from "connected-react-router";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://3sty5gbjc3.execute-api.us-east-1.amazonaws.com/v1";
 const getToken = () => localStorage.getItem("token");
 
 // signups

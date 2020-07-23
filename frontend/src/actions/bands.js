@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://3sty5gbjc3.execute-api.us-east-1.amazonaws.com/v1";
 const getToken = () => localStorage.getItem("token");
 
 // admin funcionalities
