@@ -1,4 +1,15 @@
-# projeto-fullstack Spotenu EM DESENVOLVIMENTO
+
+# Labenu | Full-Stack Web Development Bootcamp
+Desenvolvimento de aplicações completas, incluindo frontend Web com React e backend com Node.js.
+
+
+
+![Screenshot_1](https://user-images.githubusercontent.com/45580434/79641791-06e1c100-8170-11ea-8ecf-b6c889805d55.png)
+<br>
+
+# Spotenu  
+**_FULL STACK_**
+
 O *Spotenu* é um projeto que visa facilitar o acesso a músicas pelo mundo. Para isso, vamos dar suporte para dois tipos de usuários: as bandas (ou músicos) e os ouvintes (usuários que consomem as músicas). Além disso, nós vamos montar uma operação com funcionários próprios que precisam gerenciar os dados que circulam no nosso sistema. Eles serão os nossos administradores.
 
 **Usuários músicos**
@@ -57,7 +68,7 @@ Por fim, há a possibilidade de bloquear qualquer usuário (que não seja um adm
     Somente um administrador pode adicionar gêneros na nossa aplicação. Para isso, deve fornecer um nome. Caso já exista um gênero com esse nome, um erro deve ser retornado
 
 
-- 8**. Ver gêneros músicias**
+- **8. Ver gêneros músicias**
 
     Tanto um administrador como um usuário banda podem ver todos os gêneros músicas. Retorne uma lista com id e nome
 
@@ -66,7 +77,7 @@ Por fim, há a possibilidade de bloquear qualquer usuário (que não seja um adm
     Uma banda pode criar um álbum para colocar as suas músicas. Deve fornecer o nome e uma lista de gêneros. Quando o álbum for criado, ele deve ser diretamente atrelado à banda que estiver autenticada na aplicação. Só bandas podem criar álbuns.
 
 
-- 10**. Criação de músicas**
+- **10. Criação de músicas**
 
     Para criar uma música, um nome e um álbum devem ser informados. Caso o álbum não exista, um erro deve ser informado. Se já existir uma música com esse nome no álbum, outro erro deve ser retornado. 
 
@@ -115,4 +126,112 @@ Por fim, há a possibilidade de bloquear qualquer usuário (que não seja um adm
     Aqui é o onde as bandas criam músicas Para isso, devem fornecer o nome e o selecionar um álbum que já tenham criado.
 
 
+## Tecnologias/Ferramentas:
+- React
+- Material-UI
+- Styled-components
+- Axios
+- Redux
+- AWS
+- Typescript
+- SQL
+- Git
+- Typescript
+- Node.js
+- MVC
+- Programação Orientada a Objetos
+- MySQL
+- Postman
+<br>
+<br>
 
+## O que a plataforma é capaz de fazer 🏁
+
+🏆 _Fornecer uma aplicação backend para uma rede social de músicas._
+
+🏆 _Coletar, verificar, armazenar os dados em banco de dados próprio para o sistema._
+
+🏆 _Fornecer uma aplicação Front end para uma rede social de músicas._
+
+🏆 _Logar, verificar usuários, validar informações._
+<br>
+
+## Linguagens e libs utilizadas 📚
+_**Back end**_
+
+- Typescript: versão 3.8.3
+- bcryptjs: versão 5.0.1 @types/2.4.2
+- dotenv: versão 8.2.0
+- express: versão 4.17.0 @types/4.17.0
+- jsonwebtoken: versão 8.5.1 @types/8.3.9
+- knex: versão 0.21.1 @types/0.16.1
+- moment: versão 2.25.3
+- mysql: versão 2.18.1
+- uuid: versão 8.0.0 @types/7.0.3
+
+_**Front end**_
+
+- @material-ui/core: 4.10.2,
+- @material-ui/icons: 4.9.1,
+- axios: 0.19.0,
+- connected-react-route: 6.5.2,
+- history: 4.10.1,
+- jss: 10.0.0,
+- react: 16.8.6,
+- react-dom: 16.8.6,
+- react-input-mask: 2.0.4,
+- react-jss: 8.6.1,
+- react-number-format: 4.4.1,
+- react-redux: 7.1.1,
+- react-router-dom: 5.1.2,
+- react-scripts: 3.0.1,
+- redux: 4.0.4,
+- redux-thunk: 2.3.0,
+- styled-components: 4.4.1
+
+### Como rodar a aplicação ▶️
+
+No terminal, clone o projeto:
+
+```
+git clone https://github.com/EloisaFagundes/projeto-fullstack
+```
+Navegue para dentro da raiz do projeto e escolha a pasta frontend ou backend
+
+```
+cd projeto-fullstack
+```
+
+```
+cd frontend
+```
+Instale as dependências
+
+```
+npm i
+```
+
+```
+npm start
+```
+
+
+## Excluisvo para o Back end
+**Crie um arquivo .env com as configurações do seu banco de dados** (preferencialmente MySQL, caso deseje utilizar outro, adaptações no código e dependências serão necessárias).
+
+```
+DB_HOST = seu_endereço_host
+DB_USER = seu_usuário
+DB_PASSWORD = sua_sehna
+DB_DATABASE_NAME = seu_banco_de_dados
+JWT_KEY = chave_para_jwt
+JWT_EXPIRE_TIME = tempo_expiração (exemplo: 15 minutes)
+BCRYPT_COST = cost_encriptação (idealmente um valor minimo de 12)
+Execute a aplicação
+```
+
+
+
+Você poderá utilizar os endpoints através de um cliente HTTP (ex. Postman) tendo o endereço localhost:3003 como URL base para as requisições. 
+
+<br>
